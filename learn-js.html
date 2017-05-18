@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>learn javascript</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        function resizeImg() {
+            document.getElementById("imgId").style.width = document.body.clientWidth * 0.3 + "px";
+        }
+
+        function changeImgAndHello() {
+            var userName = prompt("What's your name?", "Enter your name there.");
+            if (userName) {
+                alert("Hello, " + userName);
+                document.getElementById("imgId").src = "img2.png";
+            }
+
+        }
+
+        function add() {
+            var numA = parseInt(document.getElementsByTagName("input")[0].value);
+            var numB = parseInt(document.getElementsByTagName("input")[1].value);
+            var numC = numA + numB;
+            document.getElementsByTagName("input")[2].value = numC;
+        }
+
+        function check1() {
+            var num = document.getElementsByName("aNumber")[0].value;
+            var notNaN = document.getElementById("notNaN");
+            var notEmpty = document.getElementById("notEmpty");
+            if (num == "") {
+                notEmpty.style.display = "inline";
+            } else if (isNaN(num)) {
+                notNaN.style.display = "inline";
+            }
+        }
+
+        function check2() {
+            var notNaN = document.getElementById("notNaN");
+            var notEmpty = document.getElementById("notEmpty");
+            notNaN.style.display = "none";
+            notEmpty.style.display = "none";
+        }
+
+    </script>
+</head>
+<body onload="resizeImg();" onresize="resizeImg();">
+<img id="imgId" src="img1.png" style="cursor: pointer;" onclick="changeImgAndHello()">
+<pre>
+三种基本数据类型：Number、Text、Boolean
+0.
+数据类型在设置变量值和常量值的同时建立。
+1.变量
+刚创建变量的时候可以不赋值：var a; //与Swift语言不同之处
+如果变量事后被指派了其他类型，变量类型则会顺应新类型而改变～
+2.常量
+const TAXRATE = 0.95;
+常量的名称一般都大写
+3.如果常量与变量没有初始化，会被认为为undefined，代表一种特殊的数据状态
+NaN表示Not a Number，某个应该是数字的值不见时，会被标记为NaN（在计算过程中需要数字，却收到非数值的数据时，才会显示NaN）
+4.驼峰命名法
+小驼峰：一般用于函数和变量的命名
+大驼峰：一般用于对象的命名
+5.使用parseInt和parseFloat将字符串转化为int和float类型
+接收到的是字符串，如果"1" + "2"会产生"12"的结果
+a:<input type="text" name="numA">
+b:<input type="text" name="numB">
+a+b:<input type="text" name="numC" readonly>
+<input type="button" value="计算" onclick="add()">
+非空且数字: <input type="text" name="aNumber" onblur="check1()" onfocus="check2()"><span id="notNaN" style="display: none; color: red;">必须为数字。</span><span id="notEmpty" style="display: none; color: red;">不能为空。</span>
+
+</pre>
+
+
+</body>
+</html>
